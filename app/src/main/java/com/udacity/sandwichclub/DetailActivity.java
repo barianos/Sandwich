@@ -18,10 +18,20 @@ public class DetailActivity extends AppCompatActivity {
     public static final String EXTRA_POSITION = "extra_position";
     private static final int DEFAULT_POSITION = -1;
 
+    TextView mOrigin_tv;
+    TextView mDescription_tv;
+    TextView mIngredients_tv;
+    TextView mAlso_known_tv;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
+        mOrigin_tv = (TextView) findViewById(R.id.origin_tv);
+        mDescription_tv = (TextView) findViewById(R.id.description_tv);
+        mIngredients_tv = (TextView) findViewById(R.id.ingredients_tv);
+        mAlso_known_tv = (TextView) findViewById(R.id.also_known_tv);
 
         ImageView ingredientsIv = findViewById(R.id.image_iv);
 
@@ -60,12 +70,6 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void populateUI(Sandwich sandwich) {
-        TextView mOrigin_tv = (TextView) findViewById(R.id.origin_tv);
-        TextView mDescription_tv = (TextView) findViewById(R.id.description_tv);
-        TextView mIngredients_tv = (TextView) findViewById(R.id.ingredients_tv);
-        TextView mAlso_known_tv = (TextView) findViewById(R.id.also_known_tv);
-
-
         mOrigin_tv.setText(sandwich.getPlaceOfOrigin() + "\n");
         mAlso_known_tv.setText(listBeautify(sandwich.getAlsoKnownAs()));
         mDescription_tv.setText(sandwich.getDescription() + "\n");
