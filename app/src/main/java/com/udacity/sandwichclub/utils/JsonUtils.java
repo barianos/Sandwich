@@ -20,12 +20,12 @@ public class JsonUtils {
             String test = mainObject.getString("name");
             JSONObject nameObject = new JSONObject(test);
 
-            String mainName = nameObject.getString("mainName");
+            String mainName = nameObject.optString("mainName");
             JSONArray alsoKnownAs = nameObject.getJSONArray("alsoKnownAs");
             List<String> knownList = JSONArrayToList(alsoKnownAs);
-            String placeOfOrigin = mainObject.getString("placeOfOrigin");
-            String description = mainObject.getString("description");
-            String image = mainObject.getString("image");
+            String placeOfOrigin = mainObject.optString("placeOfOrigin");
+            String description = mainObject.optString("description");
+            String image = mainObject.optString("image");
             JSONArray ingredients = mainObject.getJSONArray("ingredients");
             List<String> ingList = JSONArrayToList(ingredients);
 
@@ -40,7 +40,7 @@ public class JsonUtils {
     }
 
     private static List<String> JSONArrayToList(JSONArray array) {
-        List<String> list = new ArrayList<String>();
+        List<String> list = new ArrayList<>();
         if (null != array) {
             for (int i = 0; i < array.length(); i++) {
                 try {
